@@ -28,8 +28,13 @@ See also [upload-artifact](https://github.com/actions/upload-artifact).
 > [!IMPORTANT]
 > actions/download-artifact@v8 has been migrated to an ESM module. This should be transparent to the caller but forks might need to make significant changes.
 
+> [!IMPORTANT]
+> Hash mismatches will now error by default. Users can override this behavior with a setting change (see below).
+
 - Downloads will check the content-type returned to determine if a file can be decompressed and skip the decompression stage if so. This removes previous failures where we were trying to decompress a non-zip file. Since this is making a big change to the default behavior, we're making it opt-in via a version bump.
 - Users can also download a zip file without decompressing it with the new `skip-decompress` flag.
+
+- Introduces a new parameter `digest-mismatch` that allows callers to specify what to do when the downloaded hash doesn't match the expected hash (`ignore`, `info`, `warn`, `error`). To ensure security by default, the default value is `error`.
 
 - Chore: we've bumped versions on a lot of our dev packages to get them up to date with the latest bugfixes/security patches.
 
