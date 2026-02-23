@@ -63,14 +63,14 @@ jobs:
         path: path/to/artifact-B
 
     # Test downloading a single artifact
-    - name: Download artifact A
+    - name: Download artifact A (absolute path)
       uses: ./
       with:
         name: Artifact-A-${{ matrix.runs-on }}
         path: some/new/path
 
     # Test downloading an artifact using tilde expansion
-    - name: Download artifact A
+    - name: Download artifact A (tilde expansion)
       uses: ./
       with:
         name: Artifact-A-${{ matrix.runs-on }}
