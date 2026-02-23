@@ -142,7 +142,7 @@ jobs:
 
     - name: Verify skip-decompress download
       run: |
-        $rawFile = "skip-decompress-test/artifact"
+        $rawFile = "skip-decompress-test/artifact.zip"
         if(!(Test-Path -path $rawFile))
         {
             Write-Error "Expected raw artifact file does not exist at $rawFile"
