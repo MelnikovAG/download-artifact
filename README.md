@@ -31,6 +31,8 @@ See also [upload-artifact](https://github.com/actions/upload-artifact).
 - Downloads will check the content-type returned to determine if a file can be decompressed and skip the decompression stage if so. This removes previous failures where we were trying to decompress a non-zip file. Since this is making a big change to the default behavior, we're making it opt-in via a version bump.
 - Users can also download a zip file without decompressing it with the new `skip-decompress` flag.
 
+- Chore: we've bumped versions on a lot of our dev packages to get them up to date with the latest bugfixes/security patches.
+
 ## v7 - What's new
 
 > [!IMPORTANT]
