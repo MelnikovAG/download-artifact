@@ -23,6 +23,16 @@ See also [upload-artifact](https://github.com/actions/upload-artifact).
   - [Limitations](#limitations)
     - [Permission Loss](#permission-loss)
 
+## v8 - What's new
+
+> [!IMPORTANT]
+> actions/download-artifact@v8 has been migrated to an ESM module. This should be transparent to the caller but forks might need to make significant changes.
+
+- Downloads will check the content-type returned to determine if a file can be decompressed and skip the decompression stage if so. This removes previous failures where we were trying to decompress a non-zip file. Since this is making a big change to the default behavior, we're making it opt-in via a version bump.
+- Users can also download a zip file without decompressing it with the new `skip-decompress` flag.
+
+- Chore: we've bumped versions on a lot of our dev packages to get them up to date with the latest bugfixes/security patches.
+
 ## v7 - What's new
 
 > [!IMPORTANT]
@@ -69,7 +79,7 @@ For assistance with breaking changes, see [MIGRATION.md](docs/MIGRATION.md).
 
 ## Note
 
-Thank you for your interest in this GitHub repo, however, right now we are not taking contributions. 
+Thank you for your interest in this GitHub repo, however, right now we are not taking contributions.
 
 We continue to focus our resources on strategic areas that help our customers be successful while making developers' lives easier. While GitHub Actions remains a key part of this vision, we are allocating resources towards other areas of Actions and are not taking contributions to this repository at this time. The GitHub public roadmap is the best place to follow along for any updates on features we’re working on and what stage they’re in.
 
@@ -77,7 +87,7 @@ We are taking the following steps to better direct requests related to GitHub Ac
 
 1. We will be directing questions and support requests to our [Community Discussions area](https://github.com/orgs/community/discussions/categories/actions)
 
-2. High Priority bugs can be reported through Community Discussions or you can report these to our support team https://support.github.com/contact/bug-report.
+2. High Priority bugs can be reported through Community Discussions or you can report these to our support team <https://support.github.com/contact/bug-report>.
 
 3. Security Issues should be handled as per our [security.md](SECURITY.md).
 
@@ -216,7 +226,7 @@ If the `name` input parameter is not provided, all artifacts will be downloaded.
 
 Example, if there are two artifacts `Artifact-A` and `Artifact-B`, and the directory is `etc/usr/artifacts/`, the directory structure will look like this:
 
-```
+```bash
 etc/usr/artifacts/
     Artifact-A/
         ... contents of Artifact-A
@@ -258,7 +268,7 @@ steps:
 
 Which will result in:
 
-```
+```bash
 path/to/artifacts/
     ... contents of Artifact-A
     ... contents of Artifact-B
@@ -298,7 +308,7 @@ jobs:
 
 This results in a directory like so:
 
-```
+```bash
 my-artifact/
   file-macos-latest.txt
   file-ubuntu-latest.txt
